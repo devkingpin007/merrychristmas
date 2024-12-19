@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Merry Christmas Janeyol</title>
+  <link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body>
+    <!-- Create multiple floating images -->
+    <div id="floatingContainer"></div>
+
+    <div class="card">
+        <div class="back"></div>
+        <div class="front">
+            <div class="imgset">
+                <img width="100%" src="final_card.jpg">
+            </div>
+        </div>
+        <div class="text-container">
+            <p id="head">Merry Christmas Janeyol</p>
+            <p>To My Love,<br><br>Each moment with you feels like magic.
+              You bring light and joy to my life,
+              and I cherish you more than words can say.
+              You’re my greatest blessing,<br>
+              I love you, now and always.<br><br><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your Amjol
+            </p>
+
+            <!-- <p>Hope your day goes great!</p> -->
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const NUMBER_OF_IMAGES = 20;  // Change this number to create more/less images
+        const IMAGE_PATHS = ['dust_removed.png', 'dust-removebg-preview.png','noface-removebg-preview.png'];  // Array of image paths
+        
+        // Create multiple images
+        const container = document.getElementById('floatingContainer');
+        for (let i = 0; i < NUMBER_OF_IMAGES; i++) {
+            const img = document.createElement('img');
+            // Alternate between the two images
+            img.src = IMAGE_PATHS[i % 3];
+            img.className = 'floatingImage';
+            img.style.position = 'fixed';
+            img.style.width = '150px';
+            container.appendChild(img);
+        }
+
+        function moveImages() {
+            const images = document.getElementsByClassName('floatingImage');
+            const maxX = window.innerWidth - 50;
+            const maxY = window.innerHeight - 50;
+            
+            for (let img of images) {
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+                
+                img.style.left = randomX + 'px';
+                img.style.top = randomY + 'px';
+            }
+        }
+
+        // Move images every 2 seconds
+        setInterval(moveImages, 2000);
+        moveImages(); // Initial positions
+    </script>
+</body>
+<!-- partial -->
+  
+</body>
+</html>
